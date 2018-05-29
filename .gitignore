@@ -45,3 +45,8 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+# unnecessary model and map formats
+*.vrml
+*.binvox
+*.x3d
