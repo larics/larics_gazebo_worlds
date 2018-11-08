@@ -48,10 +48,10 @@ int main(int argc, char **argv)
     string input_file_path, config_file_path, output_map_path;
     nh_private.param("input_map", input_file_path, 
         ros::package::getPath("larics_gazebo_worlds") + 
-        string("/models/floor_plan_simple/model.binvox.bt"));
+        string("/models/city/city.binvox.bt"));
     nh_private.param("output_map", output_map_path, 
         ros::package::getPath("larics_gazebo_worlds") + 
-        string("/models/floor_plan_simple/model_rotated.binvox.bt"));
+        string("/models/city/city_rotated.binvox.bt"));
     nh_private.param("config_file", config_file_path, 
         string("/home/antun/catkin_ws/src/larics_gazebo_worlds/config/transform.yaml"));
     Eigen::Matrix4d T = getMatrixFromYamlFile(config_file_path);
