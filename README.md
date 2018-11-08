@@ -1,6 +1,30 @@
-# larics_gazebo_worlds
+# larics\_gazebo\_worlds
 
-larics_gazebo_worlds contains all the worlds used in our Gazebo simulation environments. To use the worlds simple clone the directory in your ros_workspace, and launch the appropriate file.
+larics\_gazebo\_worlds package contains all the worlds used in our Gazebo simulation environments. To use the worlds simple clone the directory in your ros_workspace, and launch the appropriate file.
+
+## Generating files for new world
+There are three types of files for each model, that are used within this repository:
+
+* .dae - This provides 3D model that is suitable for visualization in Gazebo environment.
+* .world - This sets up world in Gazebo based on previously mentioned .dae file.
+* .binvox.bt - This file represents a map suitable for path planning in spawned environment. It is not necessary to have this file for your world, it is recommended for planning.
+
+
+### Generating *octomap*
+In folder ```scripts``` there are files that can transform 3D model of your world to .binvox.bt format to represent octomap. You will have to convert your .dae file to .x3d file format in order for this to work. The conversion can be done by calling:
+
+```bash
+./x3dToBinwoxbt.sh path_to_file
+```
+
+### Map has voxels where they don't belong
+The aforementioned procedure can produce some weird results, like occupied voxels in the map where they shouldn't be. This can be solved by rotating map in your editor and exporting it with different rotation. If this happens try to use different rotations until you are satisfied with the final map. The map will then be rotated and may not be suitable for planning, that's why there is a ROS node that can rotate the map and save it. You can run the conversion with:
+
+```bash
+rosrun larics_gazebo_worlds transform_octomap input_map:=path_to_input_map output_map:=path_to_output_map config_file:=path_to_config_file
+```
+
+An example of a configuration file is provided within ```config``` folder. It is a .yaml file with transformation matrix. You can edit this file or create your own file with transformation.
 
 ## Adding a new World
 To add a new world to this repository simple follow this guide. You will need three files:
