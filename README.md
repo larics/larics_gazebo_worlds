@@ -17,6 +17,8 @@ In folder ```scripts``` there are files that can transform 3D model of your worl
 ./x3dToBinwoxbt.sh path_to_file
 ```
 
+The map file will be saved to the same folder where .x3d file is.
+
 ### Map has voxels where they don't belong
 The aforementioned procedure can produce some weird results, like occupied voxels in the map where they shouldn't be. This can be solved by rotating map in your editor and exporting it with different rotation. If this happens try to use different rotations until you are satisfied with the final map. The map will then be rotated and may not be suitable for planning, that's why there is a ROS node that can rotate the map and save it. You can run the conversion with:
 
