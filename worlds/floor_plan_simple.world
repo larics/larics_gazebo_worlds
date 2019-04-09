@@ -13,7 +13,7 @@
       </attenuation>
       <direction>-0.5 0.5 -1</direction>
     </light>
-    <model name='floor_plan_simple'>
+    <model name='ground_plane'>
       <static>1</static>
       <link name='link'>
         <collision name='collision'>
@@ -29,14 +29,56 @@
                 <mu>100</mu>
                 <mu2>50</mu2>
               </ode>
-              <torsional>
-                <ode/>
-              </torsional>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <model name='floor_plan_simple'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://larics_gazebo_worlds/models/floor_plan_simple/model.dae</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
             </friction>
             <contact>
               <ode/>
             </contact>
-            <bounce/>
           </surface>
           <max_contacts>10</max_contacts>
         </collision>

@@ -54,11 +54,11 @@
         <gravity>1</gravity>
       </link>
     </model>
-    <model name='pole'>
       <include>
           <uri>model://larics_gazebo_worlds/models/pole</uri>
+          <name>pole</name>
+	  <pose> 1 1 0 0 0 0 </pose>
         </include>
-    </model>
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
