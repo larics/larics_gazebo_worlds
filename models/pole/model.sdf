@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="pole">
+    <static>true</static>
+    <link name="pole">
+      <collision name="collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://larics_gazebo_worlds/models/mbzirc/pole.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://larics_gazebo_worlds/models/mbzirc/pole.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="rope">
+        <pose>-0.23 -0.23 1.705 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>.01</radius>
+              <length>.5</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>.01</radius>
+              <length>.5</length>
+            </cylinder>
+          </geometry>
+        </visual>
+      </link>
+      <link name="sphere">
+        <pose>-0.23 -0.23 1.405 0 0 0</pose>
+        <collision name="collision">
+          <geometry>
+            <sphere>
+              <radius>.05</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>.05</radius>
+            </sphere>
+          </geometry>
+	<material>
+	    <ambient>1 0 0 1</ambient>
+	    <diffuse>1 0 0 1</diffuse>
+	    <specular>0.1 0.1 0.1 1</specular>
+	    <emissive>0 0 0 0</emissive>
+	  </material>
+        </visual>
+      </link>
+
+<joint type="ball" name="rope_hinge">
+        <pose>-0.23 -0.23 1.955 0 0 0</pose>
+        <child>rope</child>
+        <parent>pole</parent>
+      </joint>
+
+      <joint type="fixed" name="ball_hinge">
+        <pose>-0.23 -0.23 1.43 0 0 0</pose>
+        <child>sphere</child>
+        <parent>rope</parent>
+      </joint>
+  </model>
+</sdf>

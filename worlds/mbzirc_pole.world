@@ -44,7 +44,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <mesh>
-              <scale>1 1 1</scale>
+              <scale>0.2 0.2 0.2</scale>
               <uri>model://larics_gazebo_worlds/models/mbzirc/field.dae</uri>
             </mesh>
           </geometry>
@@ -53,6 +53,11 @@
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
+    </model>
+    <model name='pole'>
+      <include>
+          <uri>model://larics_gazebo_worlds/models/pole</uri>
+        </include>
     </model>
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>

@@ -19,7 +19,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <scale>1 1 1</scale>
+              <scale>0.2 0.2 0.2</scale>
               <uri>model://larics_gazebo_worlds/models/mbzirc/field.dae</uri>
             </mesh>
           </geometry>
@@ -51,7 +51,7 @@
           <cast_shadows>0</cast_shadows>
           <geometry>
             <mesh>
-              <scale>1 1 1</scale>
+              <scale>0.2 0.2 0.2</scale>
               <uri>model://larics_gazebo_worlds/models/mbzirc/field.dae</uri>
             </mesh>
           </geometry>
@@ -67,15 +67,16 @@
           <uri>model://larics_gazebo_worlds/models/red_box</uri>
         </include>
       </model>
-      <pose>-10 -10 20 0 0 0</pose>
+      <pose>0 0 20 0 0 0</pose>
       <box>
         <size>0.5 0.5 15</size>
       </box>
       <model_count>10</model_count>
       <distribution>
-        <type>random</type>
+        <type>uniform</type>
       </distribution>
     </population>
+<!--
 <population name="blue_boxes">
       <model name="blue_box">
         <include>
@@ -120,7 +121,7 @@
       <distribution>
         <type>uniform</type>
       </distribution>
-    </population>
+    </population>-->
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
