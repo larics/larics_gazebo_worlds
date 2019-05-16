@@ -11,7 +11,19 @@ There are three types of files for each model, that are used within this reposit
 
 
 ### Generating *octomap*
-In folder ```scripts``` there are files that can transform 3D model of your world to .binvox.bt format to represent octomap. You will have to convert your .dae file to .x3d file format in order for this to work. The conversion can be done by calling:
+In folder ```scripts``` there are files that can transform 3D model of your world to .binvox.bt format to represent octomap. 
+
+#### Converting from *.stl* file
+
+Convet *.stl* to *.binvox* by running: ```./binvox -e res path_to_file ```. res is resolution in voxels, the larger this number better the resolution. **Note** that this greatly impacts memory usage and process might not even start. For res=4096 on a 26MB *.stl* file it used around 65GB of RAM.
+
+Next convert *.binvox* to *.binvox.bt* by running:
+
+```binvox2bt --bb <minx> <miny> <minz> <maxx> <maxy> <maxz> path_to_file```
+
+#### Converting from *.dae* file
+
+You will have to convert your .dae file to .x3d file format in order for this to work. The conversion can be done by calling:
 
 ```bash
 ./x3dToBinwoxbt.sh path_to_file
