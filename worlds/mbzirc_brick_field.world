@@ -62,12 +62,13 @@
       </link>
     </model>
     <population name="red_boxes">
+      <static>true</static>
       <model name="red_box">
         <include>
           <uri>model://larics_gazebo_worlds/models/red_box</uri>
         </include>
       </model>
-      <pose>-0.7 -0.7 20 0 0 0</pose>
+      <pose>-0.0 -0.0 20 0 0 0</pose>
       <box>
         <size>0.5 0.5 15</size>
       </box>
@@ -83,7 +84,7 @@
           <uri>model://larics_gazebo_worlds/models/blue_box</uri>
         </include>
       </model>
-      <pose>-10 10 20 0 0 0</pose>
+      <pose>-10 10 50 0 0 0</pose>
       <box>
         <size>0.5 0.5 15</size>
       </box>

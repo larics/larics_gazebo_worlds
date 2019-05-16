@@ -1,8 +1,9 @@
+<?xml version="1.0"?>
 <sdf version='1.6'>
   <world name='default'>
     <light name='sun' type='directional'>
       <cast_shadows>1</cast_shadows>
-      <pose frame=''>0 0 10 0 -0 0</pose>
+      <pose frame=''>0 0 100 0 -0 0</pose>
       <diffuse>0.8 0.8 0.8 1</diffuse>
       <specular>0.1 0.1 0.1 1</specular>
       <attenuation>
@@ -102,6 +103,32 @@
         <gravity>1</gravity>
       </link>
     </model>
+    <!-- <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UGV1::base_link</entity>
+      <namespace>~/contain_example</namespace>
+      <pose> 2 8 0.5 0 0 0</pose>
+      <robot_namespace>human_ugv1</robot_namespace>
+      <contain_topic>msg</contain_topic>
+      <geometry>
+        <box>
+          <size>1 1 1</size>
+        </box>
+      </geometry>
+</plugin>
+<plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UGV2::base_link</entity>
+      <namespace>~/contain_example</namespace>
+      <pose> 8 8 0.5 0 0 0</pose>
+      <robot_namespace>fire_ugv2</robot_namespace>
+      <contain_topic>msg</contain_topic>
+      <geometry>
+        <box>
+          <size>1 1 1</size>
+        </box>
+      </geometry>
+</plugin> -->
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>

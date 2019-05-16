@@ -1,17 +1,17 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
-  <model name="green_box">
+  <model name="orange_box">
     <link name="link">
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.55</mass>
+        <mass>1.0</mass>
         <inertia>
-          <ixx>0.000160</ixx>
+          <ixx>0.000480</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.000800</iyy>
+          <iyy>0.019680</iyy>
           <iyz>0</iyz>
-          <izz>0.000800</izz>
+          <izz>0.019680</izz>
         </inertia>
       </inertial>
       <collision name="collision">
