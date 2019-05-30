@@ -13,7 +13,7 @@
       </attenuation>
       <direction>-0.5 0.5 -1</direction>
     </light>
-    <model name='floor_plan_simple'>
+    <model name='ground_plane'>
       <static>1</static>
       <link name='link'>
         <collision name='collision'>
@@ -22,6 +22,54 @@
               <normal>0 0 1</normal>
               <size>100 100</size>
             </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+</model>
+    <model name='floor_plan_simple'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://larics_gazebo_worlds/models/floor_plan_simple/model.dae</uri>
+            </mesh>
           </geometry>
           <surface>
             <friction>
@@ -60,6 +108,139 @@
         <gravity>1</gravity>
       </link>
     </model>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room1</namespace>
+      <pose>1.5 -9 1 0 0 0</pose>
+      <robot_namespace>room1</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+      <rate>1</rate>
+    </plugin>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room2</namespace>
+      <pose>1.5 -3.5 1 0 0 0</pose>
+      <robot_namespace>room2</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+      <rate>1</rate>
+    </plugin>
+    
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room3</namespace>
+      <pose>1.5 0 1 0 0 0</pose>
+      <robot_namespace>room3</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+    </plugin>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room4</namespace>
+      <pose>1.5 3 1 0 0 0</pose>
+      <robot_namespace>room4</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+    </plugin>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room5</namespace>
+      <pose>1.5 8 1 0 0 0</pose>
+      <robot_namespace>room5</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+    </plugin>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room6</namespace>
+      <pose>8 8 1 0 0 0</pose>
+      <robot_namespace>room6</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+    </plugin>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room7</namespace>
+      <pose>8 3 1 0 0 0</pose>
+      <robot_namespace>room7</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+    </plugin>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room8</namespace>
+      <pose>8 2 1 0 0 0</pose>
+      <robot_namespace>room8</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+    </plugin>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room9</namespace>
+      <pose>8 -5.75 1 0 0 0</pose>
+      <robot_namespace>room9</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+    </plugin>
+    <plugin name='ros_contain_gazebo_plugin' filename='libros_contain_gazebo_plugin.so'>
+      <enabled>true</enabled>
+      <entity>UAV1::base_link UAV2::base_link UAV3::base_link UGV1::base_link UGV2::base_link</entity>
+      <namespace>room10</namespace>
+      <pose>8 -9 1 0 0 0</pose>
+      <robot_namespace>room10</robot_namespace>
+      <contain_topic>container</contain_topic>
+      <geometry>
+        <box>
+          <size>1.5 1.5 2</size>
+        </box>
+      </geometry>
+    </plugin>
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
