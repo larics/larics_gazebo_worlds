@@ -50,3 +50,8 @@ CATKIN_IGNORE
 *.vrml
 *.binvox
 *.x3d
+
+# Ignore large files
+greenhouse.dae
+greenhouse_from_stl.dae
+greenhouse_no_roof.stl
