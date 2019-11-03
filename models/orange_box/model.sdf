@@ -18,7 +18,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://larics_gazebo_worlds/models/mbzirc/brick_green.dae</uri>
+            <uri>model://larics_gazebo_worlds/models/mbzirc/brick_orange.dae</uri>
           </mesh>
         </geometry>
         <surface>
@@ -37,10 +37,11 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://larics_gazebo_worlds/models/mbzirc/brick_green.dae</uri>
+            <uri>model://larics_gazebo_worlds/models/mbzirc/brick_orange.dae</uri>
           </mesh>
         </geometry>
       </visual>
     </link>
+    <static>true</static>
   </model>
 </sdf>
