@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+
+<robot name="ball" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find rotors_description)/urdf/component_snippets.xacro" />
+
+  <xacro:arg name="ball_name" default="ball" />
+  <xacro:property name="ball_name" value="$(arg ball_name)" />
+  <xacro:arg name="m" default="0.3" />
+  <xacro:property name="m" value="$(arg m)" />
+  <xacro:arg name="r" default="0.5" />
+  <xacro:property name="r" value="$(arg r)" />
+
+  <link name="${ball_name}/base_link">
+    <visual>
+      <geometry>
+        <sphere radius="${r}" />
+      </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="${m*r*r*2.0/5.0}" ixy="0.0" ixz="0.0" iyy="${m*r*r*2.0/5.0}" iyz="0.0"
+        izz="${m*r*r*2.0/5.0}" />
+      <mass value="${m}" />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="${r}" />
+      </geometry>
+
+      <surface>
+        <bounce>
+          <restitution_coefficient>1.5</restitution_coefficient>
+          <threshold>0.01</threshold>
+        </bounce>
+      </surface>
+    </collision>
+  </link>
+
+  <gazebo reference="${ball_name}/base_link">
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <material>Gazebo/Orange</material>
+    <selfCollide>true</selfCollide>
+    <maxVel>10.0</maxVel>
+    <minDepth>0.001</minDepth>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="dipole_magnet" filename="libstorm_gazebo_dipole_magnet.so">
+      <robotNamespace>$(arg name)</robotNamespace>
+      <bodyName>$(arg ball_name)/base_link</bodyName>
+      <dipole_moment>0 0 20</dipole_moment>
+      <!-- Set to false if not using ROS -->
+      <shouldPublish>true</shouldPublish>
+      <topicNs>magnet</topicNs>
+      <updateRate>100</updateRate>
+      <gain>1.0</gain>
+    </plugin>
+  </gazebo>
+
+  <xacro:odometry_plugin_macro
+    namespace="$(arg name)"
+    odometry_sensor_suffix="1"
+    child_frame_id="$(arg ball_name)"
+    parent_link="$(arg ball_name)/base_link"
+    pose_topic="pose"
+    velocity_relative_topic="velocity_relative"
+    pose_with_covariance_topic="pose_with_covariance"
+    position_topic="position"
+    transform_topic="transform"
+    odometry_topic="odometry"
+    parent_frame_id="world"
+    mass_odometry_sensor="0.01"
+    measurement_divisor="5"
+    measurement_delay="0"
+    unknown_delay="0.0"
+    noise_normal_position="0.0 0.0 0.0"
+    noise_normal_quaternion="0.0 0.0 0.0"
+    noise_normal_linear_velocity="0.0 0.0 0.0"
+    noise_normal_angular_velocity="0.0 0.0 0.0"
+    noise_uniform_position="0.0 0.0 0.0"
+    noise_uniform_quaternion="0.0 0.0 0.0"
+    noise_uniform_linear_velocity="0.0 0.0 0.0"
+    noise_uniform_angular_velocity="0.0 0.0 0.0"
+    enable_odometry_map="false"
+    odometry_map=""
+    image_scale="">
+    <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
+    <origin xyz="0.0 0.0 0" rpy="0.0 0.0 0.0" />
+  </xacro:odometry_plugin_macro>
+  
+</robot>
