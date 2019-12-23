@@ -1,4 +1,5 @@
-<robot name="greenhouse">
+<robot name="greenhouse" xmlns:xacro="http://ros.org/wiki/xacro">
+
   <link name="greenhouse_base_link">
     <visual>
     <geometry>
@@ -18,7 +19,6 @@
       </geometry>
     </collision>
   </link>
-  <static>1</static>
 
   <gazebo>
     <static>true</static>
