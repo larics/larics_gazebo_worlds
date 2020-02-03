@@ -1,0 +1,3909 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.0025</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>24.417592</latitude_deg>
+      <longitude_deg>54.436459</longitude_deg>
+      <elevation>7</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='high_wall'>  <!-- Wall 2 -->
+      <link name='brick_wall'>
+        <pose frame=''>0 0 0.85 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='brick_wall_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.3 1.7</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='brick_wall_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.3 1.7</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='channel'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 1.7 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 1.7 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wall_brick' type='fixed'>
+        <child>channel</child>
+        <parent>brick_wall</parent>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <static>1</static>
+      <pose frame=''>5.71228 -8.9536 0 0 -0 0</pose>
+      <!--<plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
+        <referenceLatitude>24.417592</referenceLatitude>
+        <referenceLongitude>54.436459</referenceLongitude>
+        <referenceAltitude>7</referenceAltitude>
+        <referenceHeading>90</referenceHeading>
+        <alwayson>true</alwayson>
+        <updaterate>1.0</updaterate>
+        <bodyname>brick_wall</bodyname>
+        <robotNamespace>wall_2</robotNamespace>
+        <topicname>/fix</topicname>
+        <velocitytopicname>/fix_velocity</velocitytopicname>
+        <drift>0.0 0.0 0.0</drift>
+        <gaussiannoise>0.0 0.0 0.0</gaussiannoise>
+        <velocitydrift>0 0 0</velocitydrift>
+        <velocitygaussiannoise>0.0 0.0 0.0</velocitygaussiannoise>
+      </plugin>-->
+    </model>
+    <model name='high_wall_1'>  <!-- Wall 4 -->
+      <link name='brick_wall'>
+        <pose frame=''>0 0 0.85 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='brick_wall_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.3 1.7</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='brick_wall_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.3 1.7</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='channel'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 1.7 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 1.7 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wall_brick' type='fixed'>
+        <child>channel</child>
+        <parent>brick_wall</parent>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <static>1</static>
+      <pose frame=''>-0.208203 -4.54022 0 0 -0 0</pose>
+      <!--<plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
+        <referenceLatitude>24.417592</referenceLatitude>
+        <referenceLongitude>54.436459</referenceLongitude>
+        <referenceAltitude>7</referenceAltitude>
+        <referenceHeading>90</referenceHeading>
+        <alwayson>true</alwayson>
+        <updaterate>1.0</updaterate>
+        <bodyname>brick_wall</bodyname>
+        <robotNamespace>wall_4</robotNamespace>
+        <topicname>/fix</topicname>
+        <velocitytopicname>/fix_velocity</velocitytopicname>
+        <drift>0.0 0.0 0.0</drift>
+        <gaussiannoise>0.0 0.0 0.0</gaussiannoise>
+        <velocitydrift>0 0 0</velocitydrift>
+        <velocitygaussiannoise>0.0 0.0 0.0</velocitygaussiannoise>
+      </plugin>-->
+    </model>
+    <model name='high_wall_2'>  <!-- Wall 3 -->
+      <link name='brick_wall'>
+        <pose frame=''>0 0 0.85 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='brick_wall_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.3 1.7</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='brick_wall_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.3 1.7</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='channel'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 1.7 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 1.7 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wall_brick' type='fixed'>
+        <child>channel</child>
+        <parent>brick_wall</parent>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <static>1</static>
+      <pose frame=''>-3.64393 -7.30771 0 0 -0 0</pose>
+      <!--<plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
+        <referenceLatitude>24.417592</referenceLatitude>
+        <referenceLongitude>54.436459</referenceLongitude>
+        <referenceAltitude>7</referenceAltitude>
+        <referenceHeading>90</referenceHeading>
+        <alwayson>true</alwayson>
+        <updaterate>1.0</updaterate>
+        <bodyname>brick_wall</bodyname>
+        <robotNamespace>wall_3</robotNamespace>
+        <topicname>/fix</topicname>
+        <velocitytopicname>/fix_velocity</velocitytopicname>
+        <drift>0.0 0.0 0.0</drift>
+        <gaussiannoise>0.0 0.0 0.0</gaussiannoise>
+        <velocitydrift>0 0 0</velocitydrift>
+        <velocitygaussiannoise>0.0 0.0 0.0</velocitygaussiannoise>
+      </plugin>-->
+    </model>
+    <model name='high_wall_0'>  <!-- Wall 1 -->
+      <link name='brick_wall'>
+        <pose frame=''>0 0 0.85 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='brick_wall_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.3 1.7</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='brick_wall_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>4 0.3 1.7</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+          <meta>
+            <layer>0</layer>
+          </meta>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='channel'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 1.7 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 1.7 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='wall_brick' type='fixed'>
+        <child>channel</child>
+        <parent>brick_wall</parent>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+      </joint>
+      <static>1</static>
+      <pose frame=''>7.96582 -2.68781 0 0 -0 0</pose>
+      <!--<plugin name="gps_controller" filename="libhector_gazebo_ros_gps.so">
+        <referenceLatitude>24.417592</referenceLatitude>
+        <referenceLongitude>54.436459</referenceLongitude>
+        <referenceAltitude>7</referenceAltitude>
+        <referenceHeading>90</referenceHeading>
+        <alwayson>true</alwayson>
+        <updaterate>1.0</updaterate>
+        <bodyname>brick_wall</bodyname>
+        <robotNamespace>wall_1</robotNamespace>
+        <topicname>/fix</topicname>
+        <velocitytopicname>/fix_velocity</velocitytopicname>
+        <drift>0.0 0.0 0.0</drift>
+        <gaussiannoise>0.0 0.0 0.0</gaussiannoise>
+        <velocitydrift>0 0 0</velocitydrift>
+        <velocitygaussiannoise>0.0 0.0 0.0</velocitygaussiannoise>
+      </plugin>-->
+    </model>
+    <state world_name='default'>
+      <sim_time>24 60000000</sim_time>
+      <real_time>24 569552528</real_time>
+      <wall_time>1578405123 397966983</wall_time>
+      <iterations>24060</iterations>
+      <model name='brick_blue'>
+        <pose frame=''>-14.1 -7.85961 0.102811 0.000457 0 -0.000982</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-14.1 -7.85961 0.102811 0.000457 0 -0.000982</pose>
+          <velocity>2.2e-05 -0.000341 0.000306 0.003409 0.000225 -0</velocity>
+          <acceleration>0.045008 -0.682097 0.612126 0.531498 0.443908 1.6e-05</acceleration>
+          <wrench>0.00045 -0.006821 0.006121 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_blue_0'>
+        <pose frame=''>-11.6 -7.87436 0.102802 0.000458 -3e-06 -0.001973</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-11.6 -7.87436 0.102802 0.000458 -3e-06 -0.001973</pose>
+          <velocity>-0.000561 -2.5e-05 -0.003292 0.000451 -0.005604 -3.4e-05</velocity>
+          <acceleration>-0.146714 -0.047251 -7.28825 0.666524 -1.45777 -0.023794</acceleration>
+          <wrench>-0.001467 -0.000473 -0.072882 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_blue_1'>
+        <pose frame=''>-12.85 -7.85736 0.102812 0.000457 5e-06 -0.011682</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-12.85 -7.85736 0.102812 0.000457 5e-06 -0.011682</pose>
+          <velocity>-1e-06 2.3e-05 -1.7e-05 -0.00023 -1.5e-05 0</velocity>
+          <acceleration>-0.001504 0.028014 -9.41554 -0.235485 -0.012568 -6e-06</acceleration>
+          <wrench>-1.5e-05 0.00028 -0.094155 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_green'>
+        <pose frame=''>-13.9 -8.87892 0.102795 0.000457 -4e-06 0.008422</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-13.9 -8.87892 0.102795 0.000457 -4e-06 0.008422</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0 0 -0 0 -0 0</acceleration>
+          <wrench>-0 0 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_green_0'>
+        <pose frame=''>-13.25 -8.88068 0.102795 0.000461 -0 0.001005</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-13.25 -8.88068 0.102795 0.000461 -0 0.001005</pose>
+          <velocity>-1e-06 0.000166 0.000987 -0.001663 -3e-06 3e-06</velocity>
+          <acceleration>-0.001317 1.06031 1.88229 1.9501 -0.021869 0.004294</acceleration>
+          <wrench>-1.3e-05 0.010603 0.018823 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_green_1'>
+        <pose frame=''>-14.5498 -8.87826 0.102796 0.000457 -3e-06 0.006556</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-14.5498 -8.87826 0.102796 0.000457 -3e-06 0.006556</pose>
+          <velocity>1.9e-05 -0.000323 0.000243 0.003227 0.000187 0</velocity>
+          <acceleration>0.036575 -0.644208 0.485548 0.193046 0.411914 0.00853</acceleration>
+          <wrench>0.000366 -0.006442 0.004855 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_green_2'>
+        <pose frame=''>-12.6001 -8.87958 0.102795 0.000456 -5e-06 0.011744</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-12.6001 -8.87958 0.102795 0.000456 -5e-06 0.011744</pose>
+          <velocity>2.3e-05 9e-05 0.000134 -0.000902 0.000236 -1e-06</velocity>
+          <acceleration>-0.003747 -0.002852 -9.67365 0.071784 -0.035887 -0.000633</acceleration>
+          <wrench>-3.7e-05 -2.9e-05 -0.096736 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_green_3'>
+        <pose frame=''>-11.2999 -8.87936 0.102797 0.000476 0 0.000169</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-11.2999 -8.87936 0.102797 0.000476 0 0.000169</pose>
+          <velocity>0 -0.000442 0.003263 0.004407 1e-06 -2e-06</velocity>
+          <acceleration>0.000131 1.34766 5.05391 -0.932326 -0.004068 -0.000642</acceleration>
+          <wrench>1e-06 0.013477 0.050539 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_green_4'>
+        <pose frame=''>-11.95 -8.87936 0.102795 0.000457 1e-06 -0.001224</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-11.95 -8.87936 0.102795 0.000457 1e-06 -0.001224</pose>
+          <velocity>-6e-06 -0.000245 0.000205 0.002448 -6.3e-05 -0</velocity>
+          <acceleration>-0.011368 -0.48558 0.410766 -1.3856 -0.132001 -0.014169</acceleration>
+          <wrench>-0.000114 -0.004856 0.004108 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_orange'>
+        <pose frame=''>-11.9 -6.87332 0.102793 0.000454 4e-06 -0.000229</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-11.9 -6.87332 0.102793 0.000454 4e-06 -0.000229</pose>
+          <velocity>0.00039 0.000329 -0.008554 -0.003296 0.00381 2e-06</velocity>
+          <acceleration>0.009113 5.5e-05 -9.8 1e-06 -0 2.3e-05</acceleration>
+          <wrench>9.1e-05 1e-06 -0.098 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_orange_0'>
+        <pose frame=''>-13.75 -6.87167 0.102803 0.000457 0 -1e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-13.75 -6.87167 0.102803 0.000457 0 -1e-06</pose>
+          <velocity>1.2e-05 -0.000185 8.1e-05 0.001852 0.000117 0</velocity>
+          <acceleration>0.023438 -0.370488 0.162335 -2.57905 0.234372 0.000107</acceleration>
+          <wrench>0.000234 -0.003705 0.001623 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red'>
+        <pose frame=''>-11.1501 -9.84371 0.102794 0.000457 1e-06 9.7e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-11.1501 -9.84371 0.102794 0.000457 1e-06 9.7e-05</pose>
+          <velocity>5.4e-05 1e-06 8.4e-05 3e-06 0.000542 -5e-06</velocity>
+          <acceleration>-0.021674 0.005476 -8.36803 -0.007357 -0.212412 0.003025</acceleration>
+          <wrench>-0.000217 5.5e-05 -0.08368 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_0'>
+        <pose frame=''>-11.5001 -9.84372 0.102785 0.000458 1e-06 1e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-11.5001 -9.84372 0.102785 0.000458 1e-06 1e-05</pose>
+          <velocity>0.0001 0.000288 -0.0087 -0.003214 0.000778 -0.000221</velocity>
+          <acceleration>0.000179 -6.2e-05 -9.8 0 1e-06 5e-06</acceleration>
+          <wrench>2e-06 -1e-06 -0.098 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_1'>
+        <pose frame=''>-11.85 -9.84372 0.102794 0.000457 -0 1e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-11.85 -9.84372 0.102794 0.000457 -0 1e-06</pose>
+          <velocity>-4e-05 0.00011 0.009764 -0.001149 -0.0004 3e-06</velocity>
+          <acceleration>-0.079987 0.225679 19.5285 -2.30063 -0.798802 0.002469</acceleration>
+          <wrench>-0.0008 0.002257 0.195285 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_10'>
+        <pose frame=''>-15.0081 -9.84368 0.102612 0.000415 -0.017292 0.002225</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-15.0081 -9.84368 0.102612 0.000415 -0.017292 0.002225</pose>
+          <velocity>3.8e-05 0.000192 -0.009603 -0.001917 0.000456 -6e-05</velocity>
+          <acceleration>-0.001962 -4.2e-05 -9.79997 0 -4e-06 2e-06</acceleration>
+          <wrench>-2e-05 -0 -0.098 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_2'>
+        <pose frame=''>-12.9001 -9.84372 0.102795 0.000441 -1e-06 5e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-12.9001 -9.84372 0.102795 0.000441 -1e-06 5e-06</pose>
+          <velocity>-0.000198 -0.000236 -0.000533 0.002732 -0.001729 -0.000249</velocity>
+          <acceleration>-0.099133 -0.551816 -3.60803 -0.64004 -0.918826 -0.072837</acceleration>
+          <wrench>-0.000991 -0.005518 -0.03608 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_3'>
+        <pose frame=''>-12.2001 -9.84372 0.102793 0.000452 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-12.2001 -9.84372 0.102793 0.000452 -0 0</pose>
+          <velocity>1.7e-05 0.000542 -0.000495 -0.005459 0.000132 -4.2e-05</velocity>
+          <acceleration>0.09689 0.72267 -1.55271 -0.978225 0.92762 -0.041821</acceleration>
+          <wrench>0.000969 0.007227 -0.015527 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_4'>
+        <pose frame=''>-12.55 -9.84336 0.102785 0.000462 -0 0.00245</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-12.55 -9.84336 0.102785 0.000462 -0 0.00245</pose>
+          <velocity>3.7e-05 -0.000251 -0.009495 0.002496 0.000372 8e-06</velocity>
+          <acceleration>7e-06 -6.9e-05 -9.8 0 0 -2e-06</acceleration>
+          <wrench>0 -1e-06 -0.098 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_5'>
+        <pose frame=''>-13.2501 -9.84332 0.102794 0.000459 -0 -0.002704</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-13.2501 -9.84332 0.102794 0.000459 -0 -0.002704</pose>
+          <velocity>-0.000154 -0.000162 -0.00027 0.001616 -0.001543 2e-06</velocity>
+          <acceleration>-0.140047 -0.205818 -0.347326 2.13449 -1.41484 -0.02751</acceleration>
+          <wrench>-0.0014 -0.002058 -0.003473 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_6'>
+        <pose frame=''>-13.6 -9.84345 0.102785 0.000457 -0 -0.001813</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-13.6 -9.84345 0.102785 0.000457 -0 -0.001813</pose>
+          <velocity>-5.1e-05 0.000337 -0.009012 -0.00338 -0.000502 8e-06</velocity>
+          <acceleration>-1.1e-05 -7.5e-05 -9.8 0 -0 -3e-06</acceleration>
+          <wrench>-0 -1e-06 -0.098 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_7'>
+        <pose frame=''>-13.9499 -9.84294 0.102785 0.000457 -2e-06 0.005133</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-13.9499 -9.84294 0.102785 0.000457 -2e-06 0.005133</pose>
+          <velocity>-1.2e-05 -0.000341 -0.008935 0.003409 -0.000129 1e-05</velocity>
+          <acceleration>-4e-06 -6.7e-05 -9.8 0 -0 1e-06</acceleration>
+          <wrench>-0 -1e-06 -0.098 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_8'>
+        <pose frame=''>-14.2991 -9.84299 0.102794 0.000457 -2e-06 0.004861</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-14.2991 -9.84299 0.102794 0.000457 -2e-06 0.004861</pose>
+          <velocity>-0 0 0 0 -0 0</velocity>
+          <acceleration>0 -0 -0 0 -0 -1e-06</acceleration>
+          <wrench>0 -0 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='brick_red_9'>
+        <pose frame=''>-14.65 -9.841 0.102795 0.000454 -1e-06 0.000151</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-14.65 -9.841 0.102795 0.000454 -1e-06 0.000151</pose>
+          <velocity>0.000186 0.000327 -0.000316 -0.003348 0.001856 -5.1e-05</velocity>
+          <acceleration>0.002139 0.006796 -9.51156 -0.025431 0.043004 -0.000984</acceleration>
+          <wrench>2.1e-05 6.8e-05 -0.095116 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='channel'>
+        <pose frame=''>-12.9973 -9.81885 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-12.9973 -9.81885 0.05 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='high_wall'>  <!-- Wall 2 -->
+        <pose frame=''>7.99888 -6.15157 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='brick_wall'>
+          <pose frame=''>7.99888 -6.15157 0.85 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='channel'>
+          <pose frame=''>7.99888 -6.15157 0.05 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='high_wall_0'>  <!-- Wall 1 -->
+        <pose frame=''>9.8453 -3.93823 -0 0 0 -1.57085</pose>
+        <scale>1 1 1</scale>
+        <link name='brick_wall'>
+          <pose frame=''>9.8453 -3.93823 0.85 0 0 -1.57085</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='channel'>
+          <pose frame=''>9.8453 -3.93823 0.05 0 0 -1.57085</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='high_wall_1'>
+        <pose frame=''>3.60405 -9.84494 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='brick_wall'>  <!-- Wall 4 -->
+          <pose frame=''>3.60405 -9.84494 0.85 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='channel'>
+          <pose frame=''>3.60405 -9.84494 0.05 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='high_wall_2'>  <!-- Wall 3 -->
+        <pose frame=''>5.80516 -7.99976 -0 0 -0 1.58384</pose>
+        <scale>1 1 1</scale>
+        <link name='brick_wall'>
+          <pose frame=''>5.80516 -7.99976 0.85 0 -0 1.58384</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='channel'>
+          <pose frame=''>5.80516 -7.99976 0.05 0 -0 1.58384</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-14.4756 12.3254 7.02819 -0 0.240894 -1.05661</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='channel'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+      <pose frame=''>-12.9973 -9.81885 0 0 -0 0</pose>
+    </model>
+    <model name='channel'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+      <pose frame=''>-13.002 -8.85822 0 0 -0 0</pose>
+    </model>
+    <model name='channel'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+      <pose frame=''>-13.0147 -7.87376 0 0 -0 0</pose>
+    </model>
+    <model name='channel'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+      <pose frame=''>-13.0133 -6.86242 0 0 -0 0</pose>
+    </model>
+    <model name='channel'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+      <pose frame=''>-12.9996 -6.86654 0 0 -0 0</pose>
+    </model>
+    <model name='channel'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+      <pose frame=''>-13.0062 -5.86913 0 0 -0 0</pose>
+    </model>
+    <model name='channel'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0.05 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='channel_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='channel_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>1</static>
+      <pose frame=''>-12.9999 -4.86412 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.82853 -10.397 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_0'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.96182 -10.7691 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_1'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-10.3334 -11.2083 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_2'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-10.6642 -11.9956 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_3'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.95122 -11.5416 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_4'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.35634 -10.9826 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_5'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-13.5121 -10.3583 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_6'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-13.9753 -10.354 0 0 -0 0</pose>
+    </model>
+    <model name='brick_green'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-10.4721 -8.89819 0 0 -0 0</pose>
+    </model>
+    <model name='brick_green_0'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-10.4939 -9.2292 0 0 -0 0</pose>
+    </model>
+    <model name='brick_green_1'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.82231 -8.97981 0 0 -0 0</pose>
+    </model>
+    <model name='brick_green_2'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.81251 -9.2915 0 0 -0 0</pose>
+    </model>
+    <model name='brick_green_3'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.02878 -8.94686 0 0 -0 0</pose>
+    </model>
+    <model name='brick_green_4'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.03652 -9.26574 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_7'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-14.2965 -10.5826 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_8'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-14.673 -10.6347 0 0 -0 0</pose>
+    </model>
+    <model name='brick_blue'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-15.7623 -7.96096 0 0 -0 0</pose>
+    </model>
+    <model name='brick_blue_0'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.831 -7.85923 0 0 -0 0</pose>
+    </model>
+    <model name='brick_blue_1'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Blue</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.67699 -8.27756 0 0 -0 0</pose>
+    </model>
+    <model name='brick_orange'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.8 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_0'>
+          <pose frame=''>-0.805 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.15 0.15 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_2'>
+          <pose frame=''>0.805 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.15 0.15 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.8 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Orange</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_0'>
+          <pose frame=''>-0.805 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.19 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.19 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_2'>
+          <pose frame=''>0.805 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.19 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>-0.805 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0.805 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-9.93904 -6.91634 0 0 -0 0</pose>
+    </model>
+    <model name='brick_orange_0'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.8 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_0'>
+          <pose frame=''>-0.805 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.15 0.15 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_2'>
+          <pose frame=''>0.805 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.15 0.15 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.8 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Orange</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_0'>
+          <pose frame=''>-0.805 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.19 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.19 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_2'>
+          <pose frame=''>0.805 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.19 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>-0.805 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0.805 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-15.9955 -6.99597 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_9'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-15.3637 -9.40999 0 0 -0 0</pose>
+    </model>
+    <model name='brick_red_10'>
+      <link name='base_link'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>0.001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.025 0.0005</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.3 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+          <pose frame=''>0 0 0.1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.15 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Gray</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+        <dipole_moment>0 0 1</dipole_moment>
+        <shouldPublish>1</shouldPublish>
+        <topicNs>magnet</topicNs>
+        <updateRate>100</updateRate>
+        <gain>1.0</gain>
+        <bodyName>base_link</bodyName>
+        <xyzOffset>0 0 -0.1</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <pose frame=''>-15.1872 -9.81365 0 0 -0 0</pose>
+    </model>
+  </world>
+</sdf>

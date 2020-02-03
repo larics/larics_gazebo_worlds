@@ -1,0 +1,93 @@
+<sdf version='1.6'>
+  <model name='brick_red'>
+    <link name='base_link'>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.3 0.2 0.2</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__magnet_patch_collision_1'>
+        <pose frame=''>0 0 0.1 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.1 0.025 0.0005</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.3 0.2 0.2</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__magnet_patch_visual_1'>
+        <pose frame=''>0 0 0.1 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.2 0.15 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Gray</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <static>0</static>
+    <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
+      <dipole_moment>0 0 1</dipole_moment>
+      <shouldPublish>1</shouldPublish>
+      <topicNs>magnet</topicNs>
+      <updateRate>100</updateRate>
+      <gain>1.0</gain>
+      <bodyName>base_link</bodyName>
+      <xyzOffset>0 0 -0.1</xyzOffset>
+      <rpyOffset>0 -0 0</rpyOffset>
+    </plugin>
+  </model>
+</sdf>
