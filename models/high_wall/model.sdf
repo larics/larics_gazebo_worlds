@@ -1,0 +1,87 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='high_wall'>
+    <link name='brick_wall'>
+      <pose frame=''>0 0 0.85 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name='brick_wall_collision'>
+        <pose frame=''>0 0 0.0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>4.0 0.3 1.7</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name='brick_wall_visual'>
+        <pose frame=''>0 0 0.0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>4.0 0.3 1.7</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Bricks</name>
+          </script>
+          <ambient>1 1 1 1</ambient>
+        </material>
+        <meta>
+          <layer>0</layer>
+        </meta>
+      </visual>
+    </link>
+
+    <link name="channel">
+      <pose frame=''>0 0 0.05 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name='channel_collision'>
+        <pose frame=''>0 0 1.7 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="channel_visual">
+        <pose frame="">0 0 1.7 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://larics_gazebo_worlds/models/mbzirc/channel.dae</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="wall_brick" type="fixed">
+      <child>channel</child>
+      <parent>brick_wall</parent>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+    <static>1</static>
+  </model>
+</sdf>

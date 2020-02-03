@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="gui" default="false"/>
+
+  <include file="$(find larics_gazebo_worlds)/launch/start.launch">
+    <arg name="world" value="$(find larics_gazebo_worlds)/worlds/mbzirc_arena_2_UGV.world"/>
+    <arg name="gui" default="$(arg gui)"/>
+  </include>
+
+</launch>
