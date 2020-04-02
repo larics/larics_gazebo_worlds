@@ -1,0 +1,26 @@
+<robot name="bucket" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <link name="bucket_base_link">
+    <visual>
+    <geometry>
+      <mesh filename="$(find larics_gazebo_worlds)/models/bucket/bucket.dae" scale="0.0625 0.0625 0.0625"/>
+    </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="10000" ixy="0.0" ixz="0.0" iyy="10000" iyz="0.0"
+        izz="10000" />
+    <mass value="100000.0" />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://larics_gazebo_worlds/models/bucket/bucket.dae" scale="0.0625 0.0625 0.0625" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+</robot>
