@@ -1,0 +1,28 @@
+<robot name="office" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!--xacro:property name="office_scale" value="0.0625" /-->
+  <xacro:property name="office_scale" value="1.0" />
+
+  <link name="office_base_link">
+    <visual>
+    <geometry>
+      <mesh filename="$(find larics_gazebo_worlds)/models/office/office.stl" scale="${office_scale} ${office_scale} ${office_scale}"/>
+    </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="10000" ixy="0.0" ixz="0.0" iyy="10000" iyz="0.0"
+        izz="10000" />
+    <mass value="100000.0" />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://larics_gazebo_worlds/models/office/office.stl" scale="${office_scale} ${office_scale} ${office_scale}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+</robot>
