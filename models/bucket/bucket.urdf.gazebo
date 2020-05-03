@@ -1,9 +1,11 @@
 <robot name="bucket" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!--xacro:property name="bucket_scale" value="0.0625" /-->
+  <xacro:property name="bucket_scale" value="0.03125" />
 
   <link name="bucket_base_link">
     <visual>
     <geometry>
-      <mesh filename="$(find larics_gazebo_worlds)/models/bucket/bucket.dae" scale="0.0625 0.0625 0.0625"/>
+      <mesh filename="$(find larics_gazebo_worlds)/models/bucket/bucket.dae" scale="${bucket_scale} ${bucket_scale} ${bucket_scale}"/>
     </geometry>
     </visual>
     <inertial>
@@ -15,7 +17,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://larics_gazebo_worlds/models/bucket/bucket.dae" scale="0.0625 0.0625 0.0625" />
+        <mesh filename="package://larics_gazebo_worlds/models/bucket/bucket.dae" scale="${bucket_scale} ${bucket_scale} ${bucket_scale}" />
       </geometry>
     </collision>
   </link>
