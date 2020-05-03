@@ -42,16 +42,18 @@
     <mu1>0.8</mu1>
     <mu2>0.8</mu2>
     <material>Gazebo/Orange</material>
-    <selfCollide>true</selfCollide>
+    <selfCollide>false</selfCollide>
     <maxVel>10.0</maxVel>
     <minDepth>0.001</minDepth>
+    <!--kp>2147483647</kp>
+    <kd>1</kd-->
   </gazebo>
 
   <gazebo>
     <plugin name="dipole_magnet" filename="libstorm_gazebo_dipole_magnet.so">
       <robotNamespace>$(arg name)</robotNamespace>
       <bodyName>$(arg ball_name)/base_link</bodyName>
-      <dipole_moment>0 0 20</dipole_moment>
+      <dipole_moment>0 0 1000</dipole_moment>
       <!-- Set to false if not using ROS -->
       <shouldPublish>true</shouldPublish>
       <topicNs>magnet</topicNs>
