@@ -2,10 +2,19 @@
 
 <launch>
   <arg name="gui" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="paused" default="false"/>
+  <arg name="verbose" default="false"/>
+  <arg name="use_sim_time" default="true"/>
 
-  <include file="$(find larics_gazebo_worlds)/launch/start.launch">
-    <arg name="world" value="$(find larics_gazebo_worlds)/worlds/icl_experiments.world"/>
-    <arg name="gui" default="$(arg gui)"/>
+  <!--launch GAZEBO with own world configuration -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="world_name" default="$(find larics_gazebo_worlds)/worlds/icl_experiments.world" />
+      <arg name="verbose" value="$(arg verbose)"/>
+      <arg name="debug" value="$(arg debug)" />
+      <arg name="gui" value="$(arg gui)" />
+      <arg name="paused" value="$(arg paused)" />
+      <arg name="use_sim_time" value="$(arg use_sim_time)" />
   </include>
 
 </launch>
