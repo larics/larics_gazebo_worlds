@@ -179,7 +179,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -284,7 +284,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -389,7 +389,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -494,7 +494,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -599,7 +599,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -704,7 +704,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -809,7 +809,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -914,7 +914,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1019,7 +1019,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1124,7 +1124,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1229,7 +1229,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1334,7 +1334,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1439,7 +1439,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1544,7 +1544,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1719,7 +1719,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1729,7 +1729,7 @@
         <rpyOffset>0 -0 0</rpyOffset>
       </plugin>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1739,7 +1739,7 @@
         <rpyOffset>0 -0 0</rpyOffset>
       </plugin>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1914,7 +1914,7 @@
       </link>
       <static>0</static>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1924,7 +1924,7 @@
         <rpyOffset>0 -0 0</rpyOffset>
       </plugin>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
@@ -1934,7 +1934,7 @@
         <rpyOffset>0 -0 0</rpyOffset>
       </plugin>
       <plugin name='dipole_magnet' filename='libstorm_gazebo_dipole_magnet.so'>
-        <dipole_moment>0 0 1</dipole_moment>
+        <dipole_moment>0 0 0.1</dipole_moment>
         <shouldPublish>1</shouldPublish>
         <topicNs>magnet</topicNs>
         <updateRate>100</updateRate>
