@@ -15,7 +15,7 @@
     <collision>
       <origin xyz="0 0 0.5" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://larics_gazebo_worlds/models/camellia_city/camellia_city_building.stl" scale="1 1 1" />
+        <!--mesh filename="package://larics_gazebo_worlds/models/camellia_city/camellia_city_building.stl" scale="1 1 1" /-->
         <!--box size="1 1 1"/-->
       </geometry>
     </collision>
