@@ -1,0 +1,34 @@
+<robot name="pepper_plant" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <link name="pepper_plant">
+    <visual>
+    <geometry>
+      <mesh scale="0.4 0.4 0.4" filename="$(find larics_gazebo_worlds)/models/pepper_plant/pepper_plant.dae"/>
+    </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="10000" ixy="0.0" ixz="0.0" iyy="10000" iyz="0.0"
+        izz="10000" />
+    <mass value="100000.0" />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <!--mesh filename="package://larics_gazebo_worlds/models/camellia_city/camellia_city_building.stl" scale="1 1 1" /-->
+        <!--box size="1 1 1"/-->
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+
+  <!--joint name="camellia_city_fixed_to_ground" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="ground_plane::link"/>
+    <child link="camellia_city_base_link"/>
+  </joint-->
+</robot>
