@@ -33,7 +33,7 @@
          -z $(arg z)
          -R 0
          -P 0
-         -Y -1.57
+         -Y 0
          -model $(arg name)"
    respawn="false" output="screen" >
   </node>
