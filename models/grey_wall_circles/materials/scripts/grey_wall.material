@@ -1,0 +1,35 @@
+material vrc/grey_wall
+{
+	receive_shadows off
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture gray_wall.png
+				filtering anistropic
+				max_anisotropy 16
+				scale 1 1
+			}
+		}
+	}
+}
+
+material vrc/grey_wall_with_circles
+{
+	receive_shadows off
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture gray_wall_with_circles.png
+				filtering anistropic
+				max_anisotropy 16
+				scale 1 1
+			}
+		}
+	}
+}
