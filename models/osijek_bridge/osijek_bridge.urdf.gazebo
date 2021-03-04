@@ -1,9 +1,9 @@
 <robot name="osijek_bridge" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <link name="greenhouse_base_link">
+  <link name="osijek_bridge_base_link">
     <visual>
     <geometry>
-      <mesh filename="$(find larics_gazebo_worlds)/models/bridge/osijek_bridge_model.dae" scale="1 1 1" />
+      <mesh filename="$(find larics_gazebo_worlds)/models/osijek_bridge/osijek_bridge_model.dae" scale="1 1 1" />
     </geometry>
     </visual>
     <inertial>
@@ -15,7 +15,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="$(find larics_gazebo_worlds)/models/bridge/osijek_bridge_model.dae" scale="1 1 1" />
+        <mesh filename="$(find larics_gazebo_worlds)/models/osijek_bridge/osijek_bridge_model.dae" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
