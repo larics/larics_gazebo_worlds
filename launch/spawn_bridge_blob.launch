@@ -1,16 +1,22 @@
 <?xml version="1.0"?>
 
 <launch>
-  <arg name="name" default="bridge"/>
+  <arg name="name" default="blob"/>
   <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
-  <arg name="x" default="0.0"/>
-  <arg name="y" default="0.0"/>
-  <arg name="z" default="-0.01"/>
+  <arg name="x" default="14.5661"/>
+  <arg name="y" default="14.9036"/>
+  <arg name="z" default="11.0134"/>
+  <arg name="roll" default="1.57079632679"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="-3.988566033"/>
+  <arg name="cylinder_mass" default="200000"/>
+  <arg name="cylinder_radius" default="0.125"/>
+  <arg name="cylinder_length" default="0.001"/>
   <arg name="enable_logging" default="false"/>
   <arg name="enable_ground_truth" default="true"/>
-  <arg name="log_file" default="mmuav_log"/>
+  <arg name="log_file" default="blob_log"/>
   <arg name="exclude_floor_link_from_collision_check" default="ground_plane::link"/>
-  <arg name="model" value="$(find larics_gazebo_worlds)/models/bridge/bridge.urdf.gazebo" />
+  <arg name="model" value="$(find larics_gazebo_worlds)/models/cylinder/cylinder.urdf.gazebo" />
 
   <!-- send the robot XML to param server -->
   <param name="/$(arg name)/robot_description" command="
@@ -19,7 +25,11 @@
     enable_ground_truth:=$(arg enable_ground_truth)
     exclude_floor_link_from_collision_check:=$(arg exclude_floor_link_from_collision_check)
     log_file:=$(arg log_file)
-    name:=$(arg name)"
+    name:=$(arg name)
+    cylinder_name:=$(arg name)
+    m:=$(arg cylinder_mass)
+    r:=$(arg cylinder_radius)
+    l:=$(arg cylinder_length)"
   />
     
   <param name="tf_prefix" type="string" value="$(arg tf_prefix)" />
@@ -31,9 +41,9 @@
          -x $(arg x)
          -y $(arg y)
          -z $(arg z)
-         -R 0
-         -P 0
-         -Y 0
+         -R $(arg roll)
+         -P $(arg pitch)
+         -Y $(arg yaw)
          -model $(arg name)"
    respawn="false" output="screen" >
   </node>

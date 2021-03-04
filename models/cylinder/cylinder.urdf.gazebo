@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<robot name="cylinder" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="cylinder_name" default="cylinder" />
+  <xacro:property name="cylinder_name" value="$(arg cylinder_name)" />
+  <xacro:arg name="m" default="1.0" />
+  <xacro:property name="m" value="$(arg m)" />
+  <xacro:arg name="r" default="0.1" />
+  <xacro:property name="r" value="$(arg r)" />
+  <xacro:arg name="l" default="0.5" />
+  <xacro:property name="l" value="$(arg l)" />
+
+  <link name="${cylinder_name}/base_link">
+    <visual>
+      <geometry>
+        <cylinder length="${l}" radius="${r}" />
+      </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="${m*r*r/4.0 + m*l*l/12.0}" ixy="0.0" ixz="0.0" 
+        iyy="${m*r*r/4.0 + m*l*l/12.0}" iyz="0.0"
+        izz="${m*r*r/5.0}" />
+      <mass value="${m}" />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="${l}" radius="${r}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo reference="${cylinder_name}/base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+  
+</robot>
