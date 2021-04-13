@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <arg name="args" default=""/>
+  
+  <include file="$(find larics_gazebo_worlds)/launch/start.launch">
+    <arg name="world" value="$(find larics_gazebo_worlds)/worlds/ASAP_bridge_element.world"/>
+    <arg name="args" default="$(arg args)"/>
+  </include>
+
+</launch>
