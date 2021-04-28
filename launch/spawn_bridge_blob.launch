@@ -3,12 +3,18 @@
 <launch>
   <arg name="name" default="blob"/>
   <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
-  <arg name="x" default="14.5661"/>
+  <!--arg name="x" default="14.5661"/>
   <arg name="y" default="14.9036"/>
   <arg name="z" default="11.0134"/>
   <arg name="roll" default="1.57079632679"/>
   <arg name="pitch" default="0.0"/>
-  <arg name="yaw" default="-3.988566033"/>
+  <arg name="yaw" default="-3.988566033"/-->
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="0"/>
   <arg name="cylinder_mass" default="200000"/>
   <arg name="cylinder_radius" default="0.125"/>
   <arg name="cylinder_length" default="0.001"/>
