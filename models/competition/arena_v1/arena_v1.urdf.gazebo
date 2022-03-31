@@ -1,9 +1,9 @@
-<robot name="asap_bridge_element" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="arena_v1" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <link name="arena_v1_base_link">
     <visual>
     <geometry>
-      <mesh filename="$(find larics_gazebo_worlds)/models/competition/arena_v1.stl" scale="1 1 1" />
+      <mesh filename="$(find larics_gazebo_worlds)/models/competition/arena_v1/arena_v1.dae" scale="1 1 1" />
     </geometry>
     </visual>
     <inertial>
@@ -15,7 +15,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="$(find larics_gazebo_worlds)/models/competition/arena_v1.stl" scale="1 1 1" />
+        <mesh filename="$(find larics_gazebo_worlds)/models/competition/arena_v1/arena_v1.dae" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
