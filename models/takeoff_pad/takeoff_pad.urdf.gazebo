@@ -1,0 +1,54 @@
+<robot name="takeoff_pad" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <link name="takeoff_pad_base_link">
+    <visual>
+    <geometry>
+      <mesh filename="$(find larics_gazebo_worlds)/models/takeoff_pad/takeoff_pad_pt1.stl" scale="1 1 0.85" />
+    </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="10000" ixy="0.0" ixz="0.0" iyy="10000" iyz="0.0"
+        izz="10000" />
+    <mass value="100000.0" />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="$(find larics_gazebo_worlds)/models/takeoff_pad/takeoff_pad_pt1.stl" scale="1 1 0.85" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="takeoff_pad_manipulator_link">
+    <visual>
+    <geometry>
+      <mesh filename="$(find larics_gazebo_worlds)/models/takeoff_pad/takeoff_pad_pt2.stl" scale="1 1 0.85" />
+    </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="10000" ixy="0.0" ixz="0.0" iyy="10000" iyz="0.0"
+        izz="10000" />
+    <mass value="100000.0" />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="$(find larics_gazebo_worlds)/models/takeoff_pad/takeoff_pad_pt2.stl" scale="1 1 0.85" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="takeoff_pad_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="takeoff_pad_base_link"/>
+    <child link="takeoff_pad_manipulator_link"/>
+  </joint>
+
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+
+</robot>
