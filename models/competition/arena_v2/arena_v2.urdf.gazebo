@@ -3,7 +3,7 @@
   <link name="arena_v2_base_link">
     <visual>
     <geometry>
-      <mesh filename="$(find larics_gazebo_worlds)/models/competition/arena_v2/arena_v2.dae" scale="1 1 1" />
+      <mesh filename="$(find larics_gazebo_worlds)/models/competition/arena_v2.dae" scale="1 1 1" />
     </geometry>
     </visual>
     <inertial>
@@ -15,7 +15,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="$(find larics_gazebo_worlds)/models/competition/arena_v2/arena_v2.dae" scale="1 1 1" />
+        <mesh filename="$(find larics_gazebo_worlds)/models/competition/arena_v2.dae" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
