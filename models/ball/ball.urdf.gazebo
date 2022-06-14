@@ -58,7 +58,7 @@
       <shouldPublish>true</shouldPublish>
       <topicNs>magnet</topicNs>
       <updateRate>100</updateRate>
-      <gain>1.0</gain>
+      <gain>2.5</gain>
     </plugin>
   </gazebo>
 
