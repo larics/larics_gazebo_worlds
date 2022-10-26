@@ -11,6 +11,7 @@
   <arg name="log_file" default="mmuav_log"/>
   <arg name="exclude_floor_link_from_collision_check" default="ground_plane::link"/>
   <arg name="model" value="$(find larics_gazebo_worlds)/models/factory/factory.urdf.gazebo" />
+  <arg name="collision_bitmask" default="-1" />
 
   <!-- send the robot XML to param server -->
   <param name="/$(arg name)/robot_description" command="
@@ -19,6 +20,7 @@
     enable_ground_truth:=$(arg enable_ground_truth)
     exclude_floor_link_from_collision_check:=$(arg exclude_floor_link_from_collision_check)
     log_file:=$(arg log_file)
+    collision_bitmask:=$(arg collision_bitmask)
     name:=$(arg name)"
   />
     
