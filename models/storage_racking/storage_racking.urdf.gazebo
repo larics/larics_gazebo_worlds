@@ -1,0 +1,46 @@
+<robot name="storage_racking" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="collision_bitmask" default="-1" />
+  <xacro:property name="collision_bitmask" value="$(arg collision_bitmask)" />
+  
+  <gazebo reference="storage_racking_base_link">
+    <collision>
+      <surface>
+        <contact>
+          <collide_bitmask>${collision_bitmask}</collide_bitmask>
+        </contact>
+      </surface>
+    </collision>
+  </gazebo>
+
+  <link name="storage_racking_base_link">
+    <visual>
+    <geometry>
+      <mesh filename="$(find larics_gazebo_worlds)/models/storage_racking/storage_racking.dae" scale="1 1 1" />
+    </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="10000" ixy="0.0" ixz="0.0" iyy="10000" iyz="0.0"
+        izz="10000" />
+    <mass value="100000.0" />
+    </inertial>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="$(find larics_gazebo_worlds)/models/storage_racking/storage_racking.dae" scale="1 1 1" />
+      </geometry>
+    </collision>
+  </link>
+
+  <gazebo>
+    <static>true</static>
+  </gazebo>
+
+  <!--joint name="greenhouse_fixed_to_ground" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="ground_plane::link"/>
+    <child link="greenhouse_base_link"/>
+  </joint-->
+</robot>
