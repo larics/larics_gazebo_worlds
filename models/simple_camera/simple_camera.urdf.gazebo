@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<robot name="simple_camera" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="namespace" default="cam_ns"/>
+  <xacro:property name="namespace" value="$(arg namespace)"/>
+  <xacro:arg name="camera_name" default="camera"/>
+  <xacro:property name="camera_name" value="$(arg camera_name)"/>
+  <!-- Camera width, height and length -->
+  <xacro:arg name="scale" default="0.05"/>
+  <xacro:property name="scale" value="$(arg scale)"/>
+  <xacro:arg name="m" default="0.3" />
+  <xacro:property name="m" value="$(arg m)" />
+
+  <!-- Does not collide with anything by default -->
+  <xacro:arg name="collision_bitmask" default="0"/>
+  <xacro:property name="collision_bitmask" value="$(arg collision_bitmask)"/>
+
+  <!-- Camera parameters -->
+  <xacro:arg name="fps" default="30"/>
+  <xacro:property name="fps" value="$(arg fps)"/>
+  <xacro:arg name="horizontal_fov" default="1.0"/>
+  <xacro:property name="horizontal_fov" value="$(arg horizontal_fov)"/>
+  <xacro:arg name="image_width" default="1920"/>
+  <xacro:property name="image_width" value="$(arg image_width)"/>
+  <xacro:arg name="image_height" default="1080"/>
+  <xacro:property name="image_height" value="$(arg image_height)"/>
+  <xacro:arg name="image_format" default="R8G8B8"/>
+  <xacro:property name="image_format" value="$(arg image_format)"/>
+  <xacro:arg name="clip_near" default="0.02"/>
+  <xacro:property name="clip_near" value="$(arg clip_near)"/>
+  <xacro:arg name="clip_far" default="300.0"/>
+  <xacro:property name="clip_far" value="$(arg clip_far)"/>
+  <xacro:arg name="noise_type" default="gaussian"/>
+  <xacro:property name="noise_type" value="$(arg noise_type)"/>
+  <xacro:arg name="noise_mean" default="0.0"/>
+  <xacro:property name="noise_mean" value="$(arg noise_mean)"/>
+  <xacro:arg name="noise_stddev" default="0.007"/>
+  <xacro:property name="noise_stddev" value="$(arg noise_stddev)"/>
+
+  <!-- Camera link -->
+  <gazebo reference="${camera_name}/base_link">
+    <collision>
+      <surface>
+        <contact>
+          <collide_bitmask>${collision_bitmask}</collide_bitmask>
+        </contact>
+      </surface>
+    </collision>
+    <gravity>0</gravity>
+  </gazebo>
+  
+  <link name="${camera_name}/base_link">
+    <visual>
+      <origin xyz="${-0.1*scale} 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="$(find larics_gazebo_worlds)/models/simple_camera/cone.dae" scale="${scale} ${scale} ${scale}" />
+      </geometry>
+      <!--material name="green"/-->
+    </visual>
+    <inertial>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <mass value="${m}" />
+    </inertial>
+  </link>
+
+  <!-- Gazebo camera params -->
+  <gazebo reference="${camera_name}/base_link">
+    <sensor type="camera" name="${camera_name}/cam">
+      <update_rate>${fps}</update_rate>
+      
+      <camera name="head">
+        <horizontal_fov>${horizontal_fov}</horizontal_fov>
+        <image>
+          <width>${image_width}</width>
+          <height>${image_height}</height>
+          <format>${image_format}</format>
+        </image>
+        <clip>
+          <near>${clip_near}</near>
+          <far>${clip_far}</far>
+        </clip>
+        <noise>
+          <type>${noise_type}</type>
+          <mean>${noise_mean}</mean>
+          <stddev>${noise_stddev}</stddev>
+        </noise>
+      </camera>
+
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>${namespace}/${camera_name}</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>${camera_name}</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+
+    </sensor>
+  </gazebo>
+  
+</robot>

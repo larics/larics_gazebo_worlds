@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="name" default="camera"/>
+  <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.5"/>
+  <arg name="roll" default="0.0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+  <arg name="enable_logging" default="false"/>
+  <arg name="enable_ground_truth" default="true"/>
+  <arg name="model" value="$(find larics_gazebo_worlds)/models/simple_camera/simple_camera.urdf.gazebo" />
+
+  <!-- Params -->
+  <arg name="namespace" default="cam_ns"/>
+  <arg name="camera_name" default="camera"/>
+  <arg name="scale" default="1"/>
+  <arg name="m" default="0.3"/>
+  <arg name="collision_bitmask" default="0"/>
+  <arg name="fps" default="30"/>
+  <arg name="horizontal_fov" default="1.0"/>
+  <arg name="image_width" default="1920"/>
+  <arg name="image_height" default="1080"/>
+  <arg name="image_format" default="R8G8B8"/>
+  <arg name="clip_near" default="0.02"/>
+  <arg name="clip_far" default="300.0"/>
+  <arg name="noise_type" default="gaussian"/>
+  <arg name="noise_mean" default="0.0"/>
+  <arg name="noise_stddev" default="0.007"/>
+
+  <!-- send the robot XML to param server -->
+  <param name="/$(arg name)/robot_description" command="
+    $(find xacro)/xacro --inorder '$(arg model)'
+    enable_logging:=$(arg enable_logging)
+    enable_ground_truth:=$(arg enable_ground_truth)
+    name:=$(arg name)
+    namespace:=$(arg namespace)
+    camera_name:=$(arg camera_name)
+    scale:=$(arg scale)
+    m:=$(arg m)
+    collision_bitmask:=$(arg collision_bitmask)
+    fps:=$(arg fps)
+    horizontal_fov:=$(arg horizontal_fov)
+    image_width:=$(arg image_width)
+    image_height:=$(arg image_height)
+    image_format:=$(arg image_format)
+    clip_near:=$(arg clip_near)
+    clip_far:=$(arg clip_far)
+    noise_type:=$(arg noise_type)
+    noise_mean:=$(arg noise_mean)
+    noise_stddev:=$(arg noise_stddev)"
+  />
+    
+  <param name="tf_prefix" type="string" value="$(arg tf_prefix)" />
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
+   args="-param /$(arg name)/robot_description
+         -sdf
+         -x $(arg x)
+         -y $(arg y)
+         -z $(arg z)
+         -R 0
+         -P 0
+         -Y 0
+         -model $(arg name)"
+   respawn="false" output="screen" >
+  </node>
+
+</launch>
