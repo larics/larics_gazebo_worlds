@@ -62,9 +62,9 @@
          -x $(arg x)
          -y $(arg y)
          -z $(arg z)
-         -R 0
-         -P 0
-         -Y 0
+         -R $(arg roll)
+         -P $(arg pitch)
+         -Y $(arg yaw)
          -model $(arg name)"
    respawn="false" output="screen" >
   </node>
