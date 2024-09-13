@@ -48,12 +48,12 @@
   <link name="ground_anchor">
     <visual>
       <geometry>
-        <sphere radius="0.001"/>
+        <sphere radius="0.1"/>
       </geometry>
     </visual>
     <collision>
       <geometry>
-        <sphere radius="0.001"/>
+        <sphere radius="0.1"/>
       </geometry>
     </collision>
     <inertial>
@@ -63,17 +63,17 @@
   </link>
 
   <!-- Revolute Joint connecting ground_anchor and box -->
-  <joint name="${box_name}_ground_joint" type="revolute">
+  <joint name="${box_name}_ground_joint" type="fixed">
     <parent link="ground_anchor"/> <!-- Connect to the ground anchor -->
     <child link="${box_name}/base_link"/> <!-- Connect to the box -->
     <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Position and orientation -->
     <axis xyz="0 0 1"/> <!-- Axis of rotation (z-axis) -->
     
-    <!-- Joint limits (constrained to 0) -->
+    <!-- Joint limits (constrained to 0) 
     <limit lower="0" upper="0" effort="0" velocity="0" />
-    
+    -->
     <!-- Dynamics (optional for effort/velocity control) -->
-    <dynamics damping="0.0" friction="0.0"/>
+    <dynamics damping="0.85" friction="0.99"/>
   </joint>
   
 </robot>

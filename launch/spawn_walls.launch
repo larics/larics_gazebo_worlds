@@ -18,7 +18,7 @@
   <arg name="roll1" default="0"/>
   <arg name="pitch1" default="0"/>
   <arg name="yaw1" default="-1.047"/>
-  <arg name="box_mass1" default="15.0"/>
+  <arg name="box_mass1" default="200.0"/>
   <arg name="color1" default="Red"/>
 
   <!-- Box 2 (top left of the V, on top of Box 1) -->
@@ -29,7 +29,7 @@
   <arg name="roll2" default="0"/>
   <arg name="pitch2" default="0"/>
   <arg name="yaw2" default="-1.047"/> 
-  <arg name="box_mass2" default="15.0"/>
+  <arg name="box_mass2" default="200.0"/>
   <arg name="color2" default="Blue"/>
 
   <!-- Box 3 (bottom right of the V) -->
@@ -40,7 +40,7 @@
   <arg name="roll3" default="0"/>
   <arg name="pitch3" default="0"/>
   <arg name="yaw3" default="1.57"/> 
-  <arg name="box_mass3" default="15.0"/>
+  <arg name="box_mass3" default="200.0"/>
   <arg name="color3" default="Yellow"/>
 
   <!-- Box 4 (top right of the V, on top of Box 3) -->
@@ -51,7 +51,7 @@
   <arg name="roll4" default="0"/>
   <arg name="pitch4" default="0"/>
   <arg name="yaw4" default="1.57"/> 
-  <arg name="box_mass4" default="15.0"/>
+  <arg name="box_mass4" default="200.0"/>
   <arg name="color4" default="Green"/>
 
   <!-- Launch Gazebo with the specified world -->
