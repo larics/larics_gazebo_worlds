@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot name="box" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Define box properties -->
+  <xacro:arg name="box_name" default="box" />
+  <xacro:property name="box_name" value="$(arg box_name)" />
+  <xacro:arg name="m" default="1.0" />
+  <xacro:property name="m" value="$(arg m)" />
+  <xacro:arg name="l" default="1.0" />
+  <xacro:property name="l" value="$(arg l)" />
+  <xacro:arg name="w" default="1.0" />
+  <xacro:property name="w" value="$(arg w)" />
+  <xacro:arg name="h" default="1.0" />
+  <xacro:property name="h" value="$(arg h)" />
+  <xacro:arg name="color" default="Gray" />
+  <xacro:property name="color" value="$(arg color)" />
+
+  <!-- Define the link for the box -->
+  <link name="${box_name}/base_link">
+    <visual>
+      <geometry>
+        <box size="${l} ${w} ${h}" />
+      </geometry>
+    </visual>
+    <inertial>
+      <inertia ixx="${m*(w*w + h*h)/12.0}" ixy="0.0" ixz="0.0" 
+        iyy="${m*(l*l + h*h)/12.0}" iyz="0.0"
+        izz="${m*(l*l + w*w)/12.0}" />
+      <mass value="${m}" />
+    </inertial>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${l} ${w} ${h}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Gazebo visualization and static property -->
+  <gazebo reference="${box_name}/base_link">
+    <material>Gazebo/${color}</material>
+  </gazebo>
+  <gazebo>
+    <static>false</static>
+  </gazebo>
+
+  <!-- Add ground anchor model (acting as world-like anchor) -->
+  <link name="ground_anchor">
+    <visual>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+
+  <!-- Revolute Joint connecting ground_anchor and box -->
+  <joint name="${box_name}_ground_joint" type="revolute">
+    <parent link="ground_anchor"/> <!-- Connect to the ground anchor -->
+    <child link="${box_name}/base_link"/> <!-- Connect to the box -->
+    <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Position and orientation -->
+    <axis xyz="0 0 1"/> <!-- Axis of rotation (z-axis) -->
+    
+    <!-- Joint limits (constrained to 0) -->
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+    
+    <!-- Dynamics (optional for effort/velocity control) -->
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+</robot>
