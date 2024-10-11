@@ -1,110 +1,61 @@
 <?xml version="1.0"?>
 <launch>
-  <!-- Bottom box dimensions (1m thick, 3m long, 1m high) -->
-  <arg name="bottom_thickness" default="1.0"/>
-  <arg name="bottom_height" default="1.0"/>
-  <arg name="bottom_length" default="3.0"/>
+  <!-- Bottom box dimensions (0.4m thick, 3m long, 3m high) -->
+  <arg name="box_thickness" default="0.4"/>
+  <arg name="box_height" default="5.0"/>
+  <arg name="box_length" default="3.0"/>
 
-  <!-- Top box dimensions (0.4m thick, 2m high, 3m long) -->
-  <arg name="top_thickness" default="0.4"/>
-  <arg name="top_height" default="2.0"/>
-  <arg name="top_length" default="3.0"/>
-
-  <!-- Box 1 (bottom left of the V) -->
-  <arg name="name1" default="box_left_bottom"/>
+  <!-- Box 1 (left side) -->
+  <arg name="name1" default="box_left"/>
   <arg name="x1" default="8"/> 
-  <arg name="y1" default="1.55"/>
-  <arg name="z1" default="0.5"/>
+  <arg name="y1" default="3"/>
+  <arg name="z1" default="1.5"/>  <!-- Origin at floor, half the height of the box -->
   <arg name="roll1" default="0"/>
   <arg name="pitch1" default="0"/>
-  <arg name="yaw1" default="-1.047"/>
+  <arg name="yaw1" default="-1.047"/> <!-- 60 degrees or -1.047 radians -->
   <arg name="box_mass1" default="200.0"/>
-  <arg name="color1" default="Red"/>
+  <arg name="color1" default="Green"/>
 
-  <!-- Box 2 (top left of the V, on top of Box 1) -->
-  <arg name="name2" default="box_left_top"/>
-  <arg name="x2" default="8"/> 
-  <arg name="y2" default="1.5"/>
-  <arg name="z2" default="2.0"/>
+  <!-- Box 2 (right side) -->
+  <arg name="name2" default="box_right"/>
+  <arg name="x2" default="9.0"/> 
+  <arg name="y2" default="0"/>
+  <arg name="z2" default="1.5"/>  <!-- Origin at floor, half the height of the box -->
   <arg name="roll2" default="0"/>
   <arg name="pitch2" default="0"/>
-  <arg name="yaw2" default="-1.047"/> 
+  <arg name="yaw2" default="1.57"/> <!-- 90 degrees or 1.57 radians -->
   <arg name="box_mass2" default="200.0"/>
-  <arg name="color2" default="Blue"/>
-
-  <!-- Box 3 (bottom right of the V) -->
-  <arg name="name3" default="box_right_bottom"/>
-  <arg name="x3" default="9.0"/>
-  <arg name="y3" default="-1.5"/> 
-  <arg name="z3" default="0.5"/> 
-  <arg name="roll3" default="0"/>
-  <arg name="pitch3" default="0"/>
-  <arg name="yaw3" default="1.57"/> 
-  <arg name="box_mass3" default="200.0"/>
-  <arg name="color3" default="Yellow"/>
-
-  <!-- Box 4 (top right of the V, on top of Box 3) -->
-  <arg name="name4" default="box_right_top"/>
-  <arg name="x4" default="9.0"/> 
-  <arg name="y4" default="-1.5"/>
-  <arg name="z4" default="2.0"/>  
-  <arg name="roll4" default="0"/>
-  <arg name="pitch4" default="0"/>
-  <arg name="yaw4" default="1.57"/> 
-  <arg name="box_mass4" default="200.0"/>
-  <arg name="color4" default="Green"/>
+  <arg name="color2" default="Red"/>
 
   <!-- Launch Gazebo with the specified world -->
   <include file="$(find larics_gazebo_worlds)/launch/start.launch">
     <arg name="world" default="worlds/empty.world"/>
   </include>
 
-  <!-- Send the robot XML for the bottom left box -->
+  <!-- Send the robot XML for the left box -->
   <param name="/$(arg name1)/robot_description" command="
     $(find xacro)/xacro '$(find larics_gazebo_worlds)/models/wall/wall_base.urdf.gazebo'
     box_name:=$(arg name1)
     m:=$(arg box_mass1)
-    l:=$(arg bottom_length)
-    w:=$(arg bottom_thickness)
-    h:=$(arg bottom_height)
+    l:=$(arg box_length)
+    w:=$(arg box_thickness)
+    h:=$(arg box_height)
     color:=$(arg color1)"
   />
 
-  <!-- Send the robot XML for the top left box -->
+  <!-- Send the robot XML for the right box -->
   <param name="/$(arg name2)/robot_description" command="
     $(find xacro)/xacro '$(find larics_gazebo_worlds)/models/wall/wall_base.urdf.gazebo'
     box_name:=$(arg name2)
     m:=$(arg box_mass2)
-    l:=$(arg top_length)
-    w:=$(arg top_thickness)
-    h:=$(arg top_height)
+    l:=$(arg box_length)
+    w:=$(arg box_thickness)
+    h:=$(arg box_height)
     color:=$(arg color2)"
   />
 
-  <!-- Send the robot XML for the bottom right box -->
-  <param name="/$(arg name3)/robot_description" command="
-    $(find xacro)/xacro '$(find larics_gazebo_worlds)/models/wall/wall_base.urdf.gazebo'
-    box_name:=$(arg name3)
-    m:=$(arg box_mass3)
-    l:=$(arg bottom_length)
-    w:=$(arg bottom_thickness)
-    h:=$(arg bottom_height)
-    color:=$(arg color3)"
-  />
-
-  <!-- Send the robot XML for the top right box -->
-  <param name="/$(arg name4)/robot_description" command="
-    $(find xacro)/xacro '$(find larics_gazebo_worlds)/models/wall/wall_base.urdf.gazebo'
-    box_name:=$(arg name4)
-    m:=$(arg box_mass4)
-    l:=$(arg top_length)
-    w:=$(arg top_thickness)
-    h:=$(arg top_height)
-    color:=$(arg color4)"
-  />
-
-  <!-- Spawn the bottom left box -->
-  <node name="spawn_box_left_bottom" pkg="gazebo_ros" type="spawn_model"
+  <!-- Spawn the left box -->
+  <node name="spawn_box_left" pkg="gazebo_ros" type="spawn_model"
     args="-param /$(arg name1)/robot_description
           -sdf
           -x $(arg x1)
@@ -117,8 +68,8 @@
     respawn="false" output="screen">
   </node>
 
-  <!-- Spawn the top left box -->
-  <node name="spawn_box_left_top" pkg="gazebo_ros" type="spawn_model"
+  <!-- Spawn the right box -->
+  <node name="spawn_box_right" pkg="gazebo_ros" type="spawn_model"
     args="-param /$(arg name2)/robot_description
           -sdf
           -x $(arg x2)
@@ -128,34 +79,6 @@
           -P $(arg pitch2)
           -Y $(arg yaw2)
           -model $(arg name2)"
-    respawn="false" output="screen">
-  </node>
-
-  <!-- Spawn the bottom right box -->
-  <node name="spawn_box_right_bottom" pkg="gazebo_ros" type="spawn_model"
-    args="-param /$(arg name3)/robot_description
-          -sdf
-          -x $(arg x3)
-          -y $(arg y3)
-          -z $(arg z3)
-          -R $(arg roll3)
-          -P $(arg pitch3)
-          -Y $(arg yaw3)
-          -model $(arg name3)"
-    respawn="false" output="screen">
-  </node>
-
-  <!-- Spawn the top right box -->
-  <node name="spawn_box_right_top" pkg="gazebo_ros" type="spawn_model"
-    args="-param /$(arg name4)/robot_description
-          -sdf
-          -x $(arg x4)
-          -y $(arg y4)
-          -z $(arg z4)
-          -R $(arg roll4)
-          -P $(arg pitch4)
-          -Y $(arg yaw4)
-          -model $(arg name4)"
     respawn="false" output="screen">
   </node>
 </launch>
