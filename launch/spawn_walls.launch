@@ -9,7 +9,7 @@
   <arg name="name1" default="box_left"/>
   <arg name="x1" default="8"/> 
   <arg name="y1" default="3"/>
-  <arg name="z1" default="1.5"/>  <!-- Origin at floor, half the height of the box -->
+  <arg name="z1" default="2.5"/>  <!-- Origin at floor, half the height of the box -->
   <arg name="roll1" default="0"/>
   <arg name="pitch1" default="0"/>
   <arg name="yaw1" default="-1.047"/> <!-- 60 degrees or -1.047 radians -->
@@ -20,12 +20,23 @@
   <arg name="name2" default="box_right"/>
   <arg name="x2" default="9.0"/> 
   <arg name="y2" default="0"/>
-  <arg name="z2" default="1.5"/>  <!-- Origin at floor, half the height of the box -->
+  <arg name="z2" default="2.5"/>  <!-- Origin at floor, half the height of the box -->
   <arg name="roll2" default="0"/>
   <arg name="pitch2" default="0"/>
   <arg name="yaw2" default="1.57"/> <!-- 90 degrees or 1.57 radians -->
-  <arg name="box_mass2" default="200.0"/>
+  <arg name="box_mass2" default="10.0"/>
   <arg name="color2" default="Red"/>
+
+  <!-- New Hovering Box -->
+  <arg name="name3" default="box_hovering"/>
+  <arg name="x3" default="8.5"/>  <!-- x position for the hovering box -->
+  <arg name="y3" default="1.5"/>  <!-- y position for the hovering box -->
+  <arg name="z3" default="5.2"/>  <!-- Height of the hovering box -->
+  <arg name="roll3" default="-1.57"/>
+  <arg name="pitch3" default="0"/>
+  <arg name="yaw3" default="1.57"/>  <!-- No rotation -->
+  <arg name="box_mass3" default="200.0"/> <!-- Mass set to zero for hovering effect -->
+  <arg name="color3" default="Blue"/>
 
   <!-- Launch Gazebo with the specified world -->
   <include file="$(find larics_gazebo_worlds)/launch/start.launch">
@@ -54,6 +65,17 @@
     color:=$(arg color2)"
   />
 
+  <!-- Send the robot XML for the hovering box -->
+  <param name="/$(arg name3)/robot_description" command="
+    $(find xacro)/xacro '$(find larics_gazebo_worlds)/models/wall/wall_base.urdf.gazebo'
+    box_name:=$(arg name3)
+    m:=$(arg box_mass3)
+    l:=$(arg box_length)
+    w:=$(arg box_thickness)
+    h:=$(arg box_height)
+    color:=$(arg color3)"
+  />
+
   <!-- Spawn the left box -->
   <node name="spawn_box_left" pkg="gazebo_ros" type="spawn_model"
     args="-param /$(arg name1)/robot_description
@@ -79,6 +101,20 @@
           -P $(arg pitch2)
           -Y $(arg yaw2)
           -model $(arg name2)"
+    respawn="false" output="screen">
+  </node>
+
+  <!-- Spawn the hovering box -->
+  <node name="spawn_box_hovering" pkg="gazebo_ros" type="spawn_model"
+    args="-param /$(arg name3)/robot_description
+          -sdf
+          -x $(arg x3)
+          -y $(arg y3)
+          -z $(arg z3)
+          -R $(arg roll3)
+          -P $(arg pitch3)
+          -Y $(arg yaw3)
+          -model $(arg name3)"
     respawn="false" output="screen">
   </node>
 </launch>

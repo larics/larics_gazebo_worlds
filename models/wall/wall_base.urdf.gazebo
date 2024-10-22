@@ -41,7 +41,7 @@
     <material>Gazebo/${color}</material>
   </gazebo>
   <gazebo>
-    <static>false</static>
+    <static>true</static>
   </gazebo>
 
   <!-- Add ground anchor model (acting as world-like anchor) -->
@@ -73,7 +73,7 @@
     <limit lower="0" upper="0" effort="0" velocity="0" />
     -->
     <!-- Dynamics (optional for effort/velocity control) -->
-    <dynamics damping="0.85" friction="0.99"/>
+    <dynamics damping="0.8" friction="0.01"/>
   </joint>
   
 </robot>
