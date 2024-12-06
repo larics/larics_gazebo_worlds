@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <launch>
+
+  <arg name="spawn_windturbine" default="true"/>
+
+  <arg name="spawn_empty_world" default="false"/>
+
   <!-- Bottom box dimensions (0.4m thick, 3m long, 3m high) -->
   <arg name="box_thickness" default="0.4"/>
   <arg name="box_height" default="5.0"/>
@@ -39,10 +44,27 @@
   <arg name="color3" default="Blue"/>
 
   <!-- Launch Gazebo with the specified world -->
-  <include file="$(find larics_gazebo_worlds)/launch/start.launch">
-    <arg name="world" default="worlds/empty.world"/>
-  </include>
 
+  <group if="$(arg spawn_empty_world)">
+    <include file="$(find larics_gazebo_worlds)/launch/start.launch">
+      <arg name="world" default="worlds/empty.world"/>
+    </include>
+  </group>
+
+  <group if="$(arg spawn_windturbine)">
+  <!-- Spawn wind turbine -->
+  <include file="$(find pcl_ris_description)/launch/spawn_wind_turbine_generic.launch">
+      <arg name="x"           value="10.17"/>
+      <arg name="y"           value="0.96"/>
+      <arg name="z"           value="-0.8"/>
+      <arg name="yaw"         value="2.3"/>
+      <arg name="roll"        value="-0.15"/>
+      <arg name="scale"       value="3.0"/>
+      <arg name="turbine_id"  value="default"/>
+  </include>
+  </group>
+
+  <group unless="$(arg spawn_windturbine)">
   <!-- Send the robot XML for the left box -->
   <param name="/$(arg name1)/robot_description" command="
     $(find xacro)/xacro '$(find larics_gazebo_worlds)/models/wall/wall_base.urdf.gazebo'
@@ -117,4 +139,5 @@
           -model $(arg name3)"
     respawn="false" output="screen">
   </node>
+  </group>
 </launch>
