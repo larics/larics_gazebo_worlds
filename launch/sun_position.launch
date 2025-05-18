@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="larics_gazebo_worlds" type="solar_position_node.py" name="solar_position_node" output="screen">
+        <param name="latitude" value="45.815399" />
+        <param name="longitude" value="15.966568" />
+        <param name="timezone" value="Europe/Zagreb" />
+    </node>
+</launch>
