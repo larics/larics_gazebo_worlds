@@ -16,11 +16,18 @@ catkin_package(
 )
 
 find_package(octomap REQUIRED)
+find_package(gazebo REQUIRED)
 
 include_directories(
+  include
   ${catkin_INCLUDE_DIRS}
   ${OCTOMAP_INCLUDE_DIRS}
+  ${GAZEBO_INCLUDE_DIRS}
 )
+link_directories(${GAZEBO_LIBRARY_DIRS})
+
+add_library(sun_direction_plugin SHARED src/sun_plugin.cpp)
+target_link_libraries(sun_direction_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 add_executable(transform_octomap src/transform_octomap.cpp)
 target_link_libraries(transform_octomap ${catkin_LIBRARIES} ${OCTOMAP_LIBRARIES} yaml-cpp)

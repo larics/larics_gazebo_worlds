@@ -85,3 +85,16 @@ For example, imagine you are addin a new world called new_world with a model new
             ...
         
 ```
+
+## Using sun plugin
+To be able to use the sun plugin it is neccessary to run the sun position node using
+
+```bash
+roslaunch larics_gazebo_worlds sun_position.launch
+latitude:=45.815399
+longitute:=15.966568
+timezone:=Europe/Zagreb
+```
+
+Sun elevation and azimuth are calculated based on the given longitude, latitude and timezone. Current time of day is used, so time when the node is started. 
+For reference on how to add the sun plugin in a world file see empty.world.
