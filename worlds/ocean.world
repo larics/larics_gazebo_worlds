@@ -6,7 +6,7 @@
     <!-- GUI -->
     <gui>
       <camera name="user_camera">
-        <pose>73.3604 -0.353679 10.7644 0 0.271643 3.09219</pose>
+        <pose>-3.28 66.0 84.0 0 0.357017 -1.354331</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
@@ -30,13 +30,19 @@
     <!-- Lights -->
     <include>
       <uri>model://sun</uri>
+      <name>sun1</name>
       <pose>0 0 200 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+      <name>sun2</name>
+      <pose>-100 100 200 0 -0.5 0</pose>
     </include>
 
     <!-- World models  -->
     <include>
       <uri>model://ocean_waves</uri>
-      <pose>0 0 0.1 0 0 0</pose>
+      <pose>0 0 3 0 0 0</pose>
     </include>
 
     <!-- A ground plane -->
