@@ -59,7 +59,7 @@
           </geometry>
         </collision>
       </link>
-</model>
+    </model>
 
   </world>
 </sdf>
