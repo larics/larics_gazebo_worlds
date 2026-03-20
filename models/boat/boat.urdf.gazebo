@@ -1,6 +1,6 @@
 <robot name="boat" xmlns:xacro="http://ros.org/wiki/xacro">
   <!--xacro:property name="boat_scale" value="0.0625" /-->
-  <xacro:property name="boat_scale" value="1.0" />
+  <xacro:property name="boat_scale" value="2.0" />
 
   <link name="boat_base_link">
     <visual>
